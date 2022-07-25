@@ -18,7 +18,7 @@ app.get('/', (request, response) => {
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
-app.use('/api/polls', pollsRouter);
-app.use('/api/votes', votesRouter);
+// app.use('/api/polls', pollsRouter);
+// app.use('/api/votes', votesRouter);
 
 export default app;

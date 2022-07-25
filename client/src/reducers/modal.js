@@ -1,11 +1,11 @@
 const INITIAL_STATE = {
-  createPoll: {
-    isOpen: false,
-  },
   login: {
     isOpen: false,
   },
   signup: {
+    isOpen: false,
+  },
+  createWork: {
     isOpen: false,
   },
   cropPhoto: {},
@@ -16,8 +16,8 @@ const INITIAL_STATE = {
 
 const modalReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'OEPN_CREATE_POLL_MODAL':
-      return { ...state, createPoll: { isOpen: action.payload } };
+    case 'OPEN_CREATE_WORK_MODAL':
+      return { ...state, createWork: { isOpen: action.payload } };
     case 'OPEN_LOGIN_MODAL':
       return { ...state, login: { isOpen: action.payload } };
     case 'OPEN_SIGNUP_MODAL':

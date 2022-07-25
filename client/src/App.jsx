@@ -12,6 +12,7 @@ import Login from './components/Auths/Login/Login';
 import SnackBars from './components/Utils/SnackBars';
 import Polls from './components/Polls/Polls';
 import CreatePoll from './components/CreatePoll/CreatePoll';
+import CreateWork from './components/CreateWork/CreateWork';
 
 // css
 import './App.css';
@@ -47,11 +48,11 @@ function App(props) {
       <Navbar />
       <Signup />
       <Login />
-      <CreatePoll />
+      {/* <CreatePoll /> */}
       <SnackBars />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Polls />} />
+          <Route path='/' element={<CreateWork />} />
         </Routes>
       </BrowserRouter>
     </div>

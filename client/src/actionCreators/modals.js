@@ -1,6 +1,6 @@
-export const setCreatePollModal = (bool) => {
+export const setCreateWorkModal = (bool) => {
   return {
-    type: 'OEPN_CREATE_POLL_MODAL',
+    type: 'OPEN_CREATE_WORK_MODAL',
     payload: bool,
   };
 };

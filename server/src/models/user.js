@@ -16,12 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  photo: String,
-  job: String,
-  nationality: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Country',
-  },
+  avatar: String,
   createdAt: {
     type: Date,
   },
@@ -34,11 +29,11 @@ userSchema.methods.isPasswordCorrect = async (enteredPassword, actualPassword) =
   return await bcrypt.compare(enteredPassword, actualPassword);
 };
 
-userSchema.virtual('votes', {
-  ref: 'Vote',
-  foreignField: 'voter',
-  localField: '_id',
-});
+// userSchema.virtual('works', {
+//   ref: 'Vote',
+//   foreignField: 'voter',
+//   localField: '_id',
+// });
 
 const User = mongoose.model('User', userSchema);
 export default User;
