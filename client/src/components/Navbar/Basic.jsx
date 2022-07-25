@@ -2,6 +2,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+// component
+import NavbarRight from './NavbarRight/NavbarRight';
+
 // mui
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
@@ -24,38 +27,39 @@ import { setSignupModal } from '../../actionCreators/modals';
 import { setLoginModal } from '../../actionCreators/modals';
 
 const Basic = (props) => {
-  const renderAuthMenuOrToolBar = () => {
-    // if (props.auth.data) {
-    return (
-      <>
-        <IconButton size='large' color='inherit' onClick={() => (window.location = '/')}>
-          <HowToVoteIcon sx={{ color: 'white' }} />
-        </IconButton>
-        <IconButton size='large' color='inherit' onClick={() => props.setCreateWorkModal(true)}>
-          {/* <BorderColorIcon sx={{ color: 'white' }} /> */}
-          <FaPhotoVideo />
-        </IconButton>
-        <IconButton size='large' color='inherit'>
-          <BarChartIcon sx={{ color: 'white' }} />
-        </IconButton>
-        <IconButton size='large' color='inherit'>
-          <AccountCircle sx={{ color: 'white' }} />
-        </IconButton>
-      </>
-    );
-    // } else {
-    //   return (
-    //     <>
-    //       <span style={{ color: 'white' }} onClick={() => props.setSignupModal(true)}>
-    //         Signup
-    //       </span>
-    //       <span style={{ color: 'white' }} onClick={() => props.setLoginModal(true)}>
-    //         Login
-    //       </span>
-    //     </>
-    //   );
-    // }
-  };
+  // const renderAuthMenuOrToolBar = () => {
+  //   if (props.auth.data) {
+  //     return (
+  //       <>
+  //         <IconButton size='large' color='inherit' onClick={() => (window.location = '/')}>
+  //           <HowToVoteIcon sx={{ color: 'white' }} />
+  //         </IconButton>
+  //         <IconButton size='large' color='inherit' onClick={() => props.setCreateWorkModal(true)}>
+  //           {/* <BorderColorIcon sx={{ color: 'white' }} /> */}
+  //           <FaPhotoVideo />
+  //         </IconButton>
+  //         <IconButton size='large' color='inherit'>
+  //           <BarChartIcon sx={{ color: 'white' }} />
+  //         </IconButton>
+  //         <IconButton size='large' color='inherit'>
+  //           <AccountCircle sx={{ color: 'white' }} />
+  //         </IconButton>
+  //       </>
+  //     );
+  //   } else {
+  //     return (
+  //       <>
+  //         <span style={{ color: 'white' }} onClick={() => props.setSignupModal(true)}>
+  //           Signup
+  //         </span>
+  //         <span style={{ color: 'white' }} onClick={() => props.setLoginModal(true)}>
+  //           Login
+  //         </span>
+  //       </>
+  //     );
+  //   }
+  // };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='fixed' style={{ background: 'rgb(0, 30, 60)', boxShadow: 'none' }}>
@@ -72,7 +76,9 @@ const Basic = (props) => {
             Lampost
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>{renderAuthMenuOrToolBar()}</Box>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <NavbarRight />
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
