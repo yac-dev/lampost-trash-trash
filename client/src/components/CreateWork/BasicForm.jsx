@@ -21,7 +21,7 @@ const BasicForm = (props) => {
         <Select
           labelId='demo-select-small'
           id='demo-select-small'
-          label='Poll type'
+          label='Work type'
           value={props.type}
           onChange={(event) => props.setType(event.target.value)}
         >

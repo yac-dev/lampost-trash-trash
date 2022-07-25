@@ -1,23 +1,31 @@
 // main libraries
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 // component
 import DialogSlide from '../Utils/DialogSlide';
 import BasicForm from './BasicForm';
 import Work from './Work/Work';
 
+// ac
+import { setCreateWorkModal } from '../../actionCreators/modals';
+
 const CreateWork = (props) => {
   const [type, setType] = useState('');
   const [work, setWork] = useState(null);
 
-  const onClose = () => {};
-  const onSubmit = () => {};
+  const onClose = () => {
+    props.setCreateWorkModal(false);
+  };
+  const onSubmit = () => {
+    console.log('submit post');
+  };
 
   return (
     <>
       <DialogSlide
-        modalOpen={props.modal.createPoll.isOpen}
-        title='What is your curiosity?'
+        modalOpen={props.modal.createWork.isOpen}
+        title='Post your work and join!'
         onClose={onClose}
         onSubmit={onSubmit}
       >
@@ -28,4 +36,8 @@ const CreateWork = (props) => {
   );
 };
 
-export default CreateWork;
+const mapStateToProps = (state) => {
+  return { modal: state.modal };
+};
+
+export default connect(mapStateToProps, { setCreateWorkModal })(CreateWork);

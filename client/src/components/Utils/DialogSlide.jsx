@@ -1,7 +1,6 @@
 // main libraries
 import React, { useState, forwardRef } from 'react';
 import { connect } from 'react-redux';
-import { setCreatePollModal } from '../../actionCreators/modals';
 
 // mui
 import Button from '@mui/material/Button';
@@ -13,7 +12,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
 // ac
-import { createPoll } from '../../actionCreators/polls';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -26,7 +24,6 @@ const DialogSlide = (props) => {
         open={props.modalOpen}
         TransitionComponent={Transition}
         keepMounted
-        // onClose={() => props.setCreatePollModal(false)}
         aria-describedby='alert-dialog-slide-description'
         PaperProps={props.style}
       >
@@ -50,4 +47,4 @@ const mapStateToProps = (state) => {
   return { modal: state.modal };
 };
 
-export default connect(mapStateToProps, { setCreatePollModal, createPoll })(DialogSlide);
+export default connect(mapStateToProps, {})(DialogSlide);

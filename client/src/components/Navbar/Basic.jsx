@@ -15,42 +15,46 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import { styled, alpha } from '@mui/material/styles';
 
+// react icons
+import { FaPhotoVideo } from 'react-icons/fa';
+
 // ac
-import { setCreatePollModal } from '../../actionCreators/modals';
+import { setCreateWorkModal } from '../../actionCreators/modals';
 import { setSignupModal } from '../../actionCreators/modals';
 import { setLoginModal } from '../../actionCreators/modals';
 
 const Basic = (props) => {
   const renderAuthMenuOrToolBar = () => {
-    if (props.auth.data) {
-      return (
-        <>
-          <IconButton size='large' color='inherit' onClick={() => (window.location = '/')}>
-            <HowToVoteIcon sx={{ color: 'white' }} />
-          </IconButton>
-          <IconButton size='large' color='inherit' onClick={() => props.setCreatePollModal(true)}>
-            <BorderColorIcon sx={{ color: 'white' }} />
-          </IconButton>
-          <IconButton size='large' color='inherit'>
-            <BarChartIcon sx={{ color: 'white' }} />
-          </IconButton>
-          <IconButton size='large' color='inherit'>
-            <AccountCircle sx={{ color: 'white' }} />
-          </IconButton>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <span style={{ color: 'white' }} onClick={() => props.setSignupModal(true)}>
-            Signup
-          </span>
-          <span style={{ color: 'white' }} onClick={() => props.setLoginModal(true)}>
-            Login
-          </span>
-        </>
-      );
-    }
+    // if (props.auth.data) {
+    return (
+      <>
+        <IconButton size='large' color='inherit' onClick={() => (window.location = '/')}>
+          <HowToVoteIcon sx={{ color: 'white' }} />
+        </IconButton>
+        <IconButton size='large' color='inherit' onClick={() => props.setCreateWorkModal(true)}>
+          {/* <BorderColorIcon sx={{ color: 'white' }} /> */}
+          <FaPhotoVideo />
+        </IconButton>
+        <IconButton size='large' color='inherit'>
+          <BarChartIcon sx={{ color: 'white' }} />
+        </IconButton>
+        <IconButton size='large' color='inherit'>
+          <AccountCircle sx={{ color: 'white' }} />
+        </IconButton>
+      </>
+    );
+    // } else {
+    //   return (
+    //     <>
+    //       <span style={{ color: 'white' }} onClick={() => props.setSignupModal(true)}>
+    //         Signup
+    //       </span>
+    //       <span style={{ color: 'white' }} onClick={() => props.setLoginModal(true)}>
+    //         Login
+    //       </span>
+    //     </>
+    //   );
+    // }
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -79,4 +83,4 @@ const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
 
-export default connect(mapStateToProps, { setCreatePollModal, setSignupModal, setLoginModal })(Basic);
+export default connect(mapStateToProps, { setCreateWorkModal, setSignupModal, setLoginModal })(Basic);
