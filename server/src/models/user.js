@@ -29,11 +29,11 @@ userSchema.methods.isPasswordCorrect = async (enteredPassword, actualPassword) =
   return await bcrypt.compare(enteredPassword, actualPassword);
 };
 
-// userSchema.virtual('works', {
-//   ref: 'Vote',
-//   foreignField: 'voter',
-//   localField: '_id',
-// });
+userSchema.virtual('works', {
+  ref: 'Work',
+  foreignField: 'creator',
+  localField: '_id',
+});
 
 const User = mongoose.model('User', userSchema);
 export default User;
