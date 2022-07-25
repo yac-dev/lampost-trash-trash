@@ -12,8 +12,9 @@ import Login from './components/Auths/Login/Login';
 import SnackBars from './components/Utils/SnackBars';
 import Polls from './components/Polls/Polls';
 // import CreatePoll from './components/CreatePoll/CreatePoll';
-import CreateWork from './components/CreateWork/CreateWork';
+// import CreateWork from './components/CreateWork/CreateWork';
 import Vote from './components/Vote/Vote';
+import PhotoCropper from './components/PhotoCropper/PhotoCropper';
 
 // css
 import './App.css';
@@ -49,8 +50,9 @@ function App(props) {
       <Navbar />
       <Signup />
       <Login />
+      <PhotoCropper />
       {/* <CreatePoll /> */}
-      <CreateWork />
+      {/* <CreateWork /> */}
       <SnackBars />
       <BrowserRouter>
         <Routes>

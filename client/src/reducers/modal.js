@@ -8,7 +8,10 @@ const INITIAL_STATE = {
   createWork: {
     isOpen: false,
   },
-  cropPhoto: {},
+  cropPhoto: {
+    isOpen: false,
+    imageData: {},
+  },
   // 最終的に、
   //{1: {isOpen: false,imageData: ''}, 2: {isOpen: false,imageData: ''}, 3" {isOpen: false,imageData: ''}, 4: {isOpen:false,imageData: '',}}
   // ていうようなdata structureにならんといかん。
@@ -23,9 +26,7 @@ const modalReducer = (state = INITIAL_STATE, action) => {
     case 'OPEN_SIGNUP_MODAL':
       return { ...state, signup: { isOpen: action.payload } };
     case 'SET_CROP_PHOTO_MODAL':
-      const previousCrops = { ...state.cropPhoto };
-      previousCrops[action.payload.index] = { isOpen: action.payload.bool, imageData: action.payload.imageData };
-      return { ...state, cropPhoto: previousCrops };
+      return { ...state, cropPhoto: { isOpen: action.payload.bool, imageData: action.payload.imageData } };
     case 'DONE_CROP_PHOTO':
       const prevCrops = { ...state.cropPhoto };
       // const done = { ...prevCrops[action.payload.index] };

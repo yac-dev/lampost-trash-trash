@@ -26,7 +26,7 @@ import { setCreateWorkModal } from '../../actionCreators/modals';
 import { setSignupModal } from '../../actionCreators/modals';
 import { setLoginModal } from '../../actionCreators/modals';
 
-const Basic = (props) => {
+const NavbarBasic = (props) => {
   // const renderAuthMenuOrToolBar = () => {
   //   if (props.auth.data) {
   //     return (
@@ -89,4 +89,4 @@ const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
 
-export default connect(mapStateToProps, { setCreateWorkModal, setSignupModal, setLoginModal })(Basic);
+export default connect(mapStateToProps, { setCreateWorkModal, setSignupModal, setLoginModal })(NavbarBasic);

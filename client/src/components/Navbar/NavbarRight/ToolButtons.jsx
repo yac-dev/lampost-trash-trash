@@ -1,5 +1,6 @@
 // main libraries
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 // mui
 import AppBar from '@mui/material/AppBar';
@@ -17,6 +18,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { FaPhotoVideo } from 'react-icons/fa';
 import { MdInsertPhoto } from 'react-icons/md';
 import { ImFilm } from 'react-icons/im';
+
+// ac
+import { setCropPhotoModal } from '../../../actionCreators/modals';
 
 const ToolButtons = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,6 +46,14 @@ const ToolButtons = (props) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const onInputChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      props.setCropPhotoModal(true, { data: file, url: URL.createObjectURL(file) });
+    }
+    setMobileMoreAnchorEl(null);
+  };
+
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -61,7 +73,7 @@ const ToolButtons = (props) => {
     >
       <MenuItem>
         <label>
-          <input accept='image/*' type='file' style={{ display: 'none' }} />
+          <input accept='image/*' type='file' style={{ display: 'none' }} onChange={(event) => onInputChange(event)} />
           <MdInsertPhoto />
           &nbsp; Post a photo
         </label>
@@ -143,4 +155,8 @@ const ToolButtons = (props) => {
   );
 };
 
-export default ToolButtons;
+const mapStateToProps = (state) => {
+  return { modal: state.modal };
+};
+
+export default connect(mapStateToProps, { setCropPhotoModal })(ToolButtons);

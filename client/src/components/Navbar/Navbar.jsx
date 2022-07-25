@@ -1,12 +1,12 @@
 import React from 'react';
-import Basic from './Basic';
+import NavbarBasic from './NavbarBasic';
 
-const Wrapper = () => {
+const Navbar = () => {
   return (
     <>
-      <Basic />
+      <NavbarBasic />
     </>
   );
 };
 
-export default Wrapper;
+export default Navbar;

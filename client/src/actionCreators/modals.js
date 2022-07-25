@@ -19,10 +19,10 @@ export const setLoginModal = (bool) => {
   };
 };
 
-export const setCropPhotoModal = (index, bool, imageData) => {
+export const setCropPhotoModal = (bool, imageData) => {
   return {
     type: 'SET_CROP_PHOTO_MODAL',
-    payload: { index, bool, imageData },
+    payload: { bool, imageData },
   };
 };
 
