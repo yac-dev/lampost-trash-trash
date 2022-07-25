@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   signup: {
     isOpen: false,
   },
-  createWork: {
+  createCompetition: {
     isOpen: false,
   },
   cropPhoto: {
@@ -19,19 +19,14 @@ const INITIAL_STATE = {
 
 const modalReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'OPEN_CREATE_WORK_MODAL':
-      return { ...state, createWork: { isOpen: action.payload } };
+    case 'OPEN_CREATE_COMPETITION_MODAL':
+      return { ...state, createCompetition: { isOpen: action.payload } };
     case 'OPEN_LOGIN_MODAL':
       return { ...state, login: { isOpen: action.payload } };
     case 'OPEN_SIGNUP_MODAL':
       return { ...state, signup: { isOpen: action.payload } };
     case 'SET_CROP_PHOTO_MODAL':
       return { ...state, cropPhoto: { isOpen: action.payload.bool, imageData: action.payload.imageData } };
-    case 'DONE_CROP_PHOTO':
-      const prevCrops = { ...state.cropPhoto };
-      // const done = { ...prevCrops[action.payload.index] };
-      prevCrops[action.payload.index].isOpen = false;
-      return { ...state, cropPhoto: prevCrops };
     default:
       return { ...state };
   }

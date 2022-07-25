@@ -22,7 +22,6 @@ import { styled, alpha } from '@mui/material/styles';
 import { FaPhotoVideo } from 'react-icons/fa';
 
 // ac
-import { setCreateWorkModal } from '../../actionCreators/modals';
 import { setSignupModal } from '../../actionCreators/modals';
 import { setLoginModal } from '../../actionCreators/modals';
 
@@ -89,4 +88,4 @@ const mapStateToProps = (state) => {
   return { auth: state.auth };
 };
 
-export default connect(mapStateToProps, { setCreateWorkModal, setSignupModal, setLoginModal })(NavbarBasic);
+export default connect(mapStateToProps, { setSignupModal, setLoginModal })(NavbarBasic);

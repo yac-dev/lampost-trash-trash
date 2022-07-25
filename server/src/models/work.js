@@ -12,6 +12,7 @@ const workSchema = new mongoose.Schema({
   state: {
     type: String,
   },
+  totalVotes: Number,
   createdAt: {
     type: Date,
   },

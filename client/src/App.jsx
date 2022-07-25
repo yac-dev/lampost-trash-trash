@@ -13,6 +13,7 @@ import SnackBars from './components/Utils/SnackBars';
 import Polls from './components/Polls/Polls';
 // import CreatePoll from './components/CreatePoll/CreatePoll';
 // import CreateWork from './components/CreateWork/CreateWork';
+import CreateCompetition from './components/CreateCompetition/CreateCompetition';
 import Vote from './components/Vote/Vote';
 import PhotoCropper from './components/PhotoCropper/PhotoCropper';
 
@@ -53,6 +54,7 @@ function App(props) {
       <PhotoCropper />
       {/* <CreatePoll /> */}
       {/* <CreateWork /> */}
+      <CreateCompetition />
       <SnackBars />
       <BrowserRouter>
         <Routes>

@@ -1,6 +1,6 @@
-export const setCreateWorkModal = (bool) => {
+export const setCreateCompetitionModal = (bool) => {
   return {
-    type: 'OPEN_CREATE_WORK_MODAL',
+    type: 'OPEN_CREATE_COMPETITION_MODAL',
     payload: bool,
   };
 };

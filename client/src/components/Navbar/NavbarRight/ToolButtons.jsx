@@ -21,6 +21,7 @@ import { ImFilm } from 'react-icons/im';
 
 // ac
 import { setCropPhotoModal } from '../../../actionCreators/modals';
+import { setCreateCompetitionModal } from '../../../actionCreators/modals';
 
 const ToolButtons = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -141,7 +142,10 @@ const ToolButtons = (props) => {
       <IconButton size='large' color='inherit' onClick={() => (window.location = '/')}>
         <HowToVoteIcon sx={{ color: 'white' }} />
       </IconButton>
-      <IconButton size='large' color='inherit' onClick={handleMobileMenuOpen}>
+      {/* <IconButton size='large' color='inherit' onClick={handleMobileMenuOpen}>
+        <FaPhotoVideo />
+      </IconButton> */}
+      <IconButton size='large' color='inherit' onClick={() => props.setCreateCompetitionModal(true)}>
         <FaPhotoVideo />
       </IconButton>
       <IconButton size='large' color='inherit'>
@@ -159,4 +163,4 @@ const mapStateToProps = (state) => {
   return { modal: state.modal };
 };
 
-export default connect(mapStateToProps, { setCropPhotoModal })(ToolButtons);
+export default connect(mapStateToProps, { setCropPhotoModal, setCreateCompetitionModal })(ToolButtons);
