@@ -15,7 +15,7 @@ import Polls from './components/Polls/Polls';
 // import CreateWork from './components/CreateWork/CreateWork';
 import CreateCompetition from './components/CreateCompetition/CreateCompetition';
 import Vote from './components/Vote/Vote';
-import PhotoCropper from './components/PhotoCropper/PhotoCropper';
+import FileCropper from './components/FileCropper/FileCropper';
 
 // css
 import './App.css';
@@ -51,7 +51,7 @@ function App(props) {
       <Navbar />
       <Signup />
       <Login />
-      <PhotoCropper />
+      <FileCropper />
       {/* <CreatePoll /> */}
       {/* <CreateWork /> */}
       <CreateCompetition />

@@ -8,9 +8,9 @@ const INITIAL_STATE = {
   createCompetition: {
     isOpen: false,
   },
-  cropPhoto: {
+  cropFile: {
     isOpen: false,
-    imageData: {},
+    type: '',
   },
   // 最終的に、
   //{1: {isOpen: false,imageData: ''}, 2: {isOpen: false,imageData: ''}, 3" {isOpen: false,imageData: ''}, 4: {isOpen:false,imageData: '',}}
@@ -25,8 +25,11 @@ const modalReducer = (state = INITIAL_STATE, action) => {
       return { ...state, login: { isOpen: action.payload } };
     case 'OPEN_SIGNUP_MODAL':
       return { ...state, signup: { isOpen: action.payload } };
-    case 'SET_CROP_PHOTO_MODAL':
-      return { ...state, cropPhoto: { isOpen: action.payload.bool, imageData: action.payload.imageData } };
+    case 'SET_CROPPER_MODAL':
+      return { ...state, cropFile: { isOpen: action.payload } };
+    case 'CLOSE_CROPPER_MODAL':
+      // data.isOpen = false;
+      return { ...state, dummy: true };
     default:
       return { ...state };
   }

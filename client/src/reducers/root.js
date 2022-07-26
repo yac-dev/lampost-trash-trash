@@ -5,6 +5,7 @@ import pollsReducer from './polls';
 import votesReducer from './votes';
 import selectedReducer from './selected';
 import alertsReducer from './alerts';
+import croppingFileReducer from './croppingFile';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   votes: votesReducer,
   selected: selectedReducer,
   alerts: alertsReducer,
+  croppingFile: croppingFileReducer,
 });
 
 export default rootReducer;

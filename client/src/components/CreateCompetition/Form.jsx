@@ -2,7 +2,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setCropPhotoModal } from '../../actionCreators/modals';
+// ac
+import { setCropperModal } from '../../actionCreators/modals';
+import { setCroppingFile } from '../../actionCreators/croppingFile';
 
 // mui
 import Stack from '@mui/material/Stack';
@@ -13,12 +15,60 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 
 const Form = (props) => {
   const onInputChange = (event) => {
+    console.log('crop modal');
     const file = event.target.files[0];
     if (file) {
-      props.setCropPhotoModal(true, { data: file, url: URL.createObjectURL(file) });
+      const fileObject = { data: file, url: URL.createObjectURL(file) };
+      props.setCropperModal(true);
+      props.setCroppingFile(fileObject);
+    }
+  };
+
+  const renderFileInput = () => {
+    if (props.type === 'video') {
+      return (
+        <>
+          {/* <input
+            accept='video/mp4,video/x-m4v,video/*'
+            type='file'
+            style={{ display: 'none' }}
+            onChange={(event) => onInputChange(event)}
+          /> */}
+          {/* <label htmlFor='raised-button-file'> */}
+          {/* <Button variant='contained' startIcon={<YouTubeIcon />}>
+              Your video
+            </Button> */}
+          video
+          <input
+            accept='video/mp4,video/x-m4v,video/*'
+            type='file'
+            // style={{ display: 'none' }}
+            onChange={(event) => onInputChange(event)}
+          />
+          {/* </label> */}
+        </>
+      );
+    } else if (props.type === 'photo') {
+      return (
+        // <Button variant='contained' startIcon={<AddPhotoAlternateIcon />}>
+        <>
+          photo
+          <label>
+            <input
+              accept='image/*'
+              type='file'
+              // style={{ display: 'none' }}
+              onChange={(event) => onInputChange(event)}
+            />
+          </label>
+        </>
+
+        // </Button>
+      );
     }
   };
 
@@ -50,32 +100,16 @@ const Form = (props) => {
           onChange={(event) => props.setType(event.target.value)}
         >
           <MenuItem value={'video'}>
-            <label>
-              <input
-                accept='video/mp4,video/x-m4v,video/*'
-                type='file'
-                style={{ display: 'none' }}
-                onChange={(event) => onInputChange(event)}
-              />
-              <YouTubeIcon />
-              &nbsp; Video
-            </label>
+            <YouTubeIcon />
+            &nbsp; Video
           </MenuItem>
           <MenuItem value={'photo'}>
-            <label>
-              <input
-                accept='image/*'
-                type='file'
-                style={{ display: 'none' }}
-                onChange={(event) => onInputChange(event)}
-              />
-              <AddPhotoAlternateIcon />
-              &nbsp; Photo
-            </label>
+            <AddPhotoAlternateIcon />
+            &nbsp; Photo
           </MenuItem>
         </Select>
       </FormControl>
-      {/* {renderPhotoOrVideo()} */}
+      {renderFileInput()}
       <TextField
         id='outlined-multiline-flexible'
         label='Message'
@@ -90,4 +124,8 @@ const Form = (props) => {
   );
 };
 
-export default connect(null, { setCropPhotoModal })(Form);
+const mapStateToProps = (state) => {
+  return { modal: state.modal };
+};
+
+export default connect(mapStateToProps, { setCropperModal, setCroppingFile })(Form);

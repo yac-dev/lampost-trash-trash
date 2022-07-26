@@ -2,6 +2,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+// ac
+import { setCreateCompetitionModal } from '../../actionCreators/modals';
+import { setCropperModal } from '../../actionCreators/modals';
+
 // component
 import DialogSlide from '../Utils/DialogSlide';
 import Form from './Form';
@@ -15,7 +19,9 @@ const CreateCompetition = (props) => {
     console.log('hi');
   };
 
-  const onClose = () => {};
+  const onClose = () => {
+    props.setCreateCompetitionModal(false);
+  };
 
   return (
     <DialogSlide
@@ -40,4 +46,4 @@ const mapStateToProps = (state) => {
   return { modal: state.modal };
 };
 
-export default connect(mapStateToProps)(CreateCompetition);
+export default connect(mapStateToProps, { setCropperModal, setCreateCompetitionModal })(CreateCompetition);

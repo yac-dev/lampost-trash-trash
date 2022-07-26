@@ -19,10 +19,17 @@ export const setLoginModal = (bool) => {
   };
 };
 
-export const setCropPhotoModal = (bool, imageData) => {
+export const setCropperModal = (bool) => {
   return {
-    type: 'SET_CROP_PHOTO_MODAL',
-    payload: { bool, imageData },
+    type: 'SET_CROPPER_MODAL',
+    payload: bool,
+  };
+};
+
+export const closeCropperModal = (bool) => {
+  return {
+    type: 'CLOSE_CROPPER_MODAL',
+    payload: bool,
   };
 };
 

@@ -3,6 +3,10 @@ import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import ReactEasyCrop from 'react-easy-crop';
 
+//ac
+import { setCropperModal } from '../../actionCreators/modals';
+import { setCroppingFile } from '../../actionCreators/croppingFile';
+
 // component
 import DialogSlide from '../Utils/DialogSlide';
 
@@ -16,13 +20,21 @@ const PhotoCropper = (props) => {
     setCroppedArea(croppedAreaPixels);
   }, []);
 
-  if (props.modal.cropPhoto.isOpen) {
+  const onClose = () => {
+    props.setCropperModal(false);
+  };
+
+  // const onSubmit = () => {
+  //   props.closeCropperModal(false);
+  // };
+
+  if (props.modal.cropFile.isOpen) {
     return (
       <DialogSlide
-        modalOpen={props.modal.cropPhoto.isOpen}
+        modalOpen={props.modal.cropFile.isOpen}
         title='Crop your photo'
-        onClose={props.onClose}
-        onSubmit={props.onSubmit}
+        onClose={onClose}
+        // onSubmit={onSubmit}
         style={{ sx: { width: '100%', height: 400 } }}
       >
         <div
@@ -36,13 +48,14 @@ const PhotoCropper = (props) => {
           }}
         >
           <ReactEasyCrop
-            image={props.modal.cropPhoto.imageData.url}
+            // image={props.croppingFile.url}
+            video={props.croppingFile.url}
             crop={crop}
             onCropChange={setCrop}
             zoom={zoom}
             onZoomChange={setZoom}
             onCropComplete={onCropComplete}
-            aspect={1}
+            aspect={16 / 9}
           />
         </div>
       </DialogSlide>
@@ -51,7 +64,7 @@ const PhotoCropper = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { modal: state.modal };
+  return { modal: state.modal, croppingFile: state.croppingFile };
 };
 
-export default connect(mapStateToProps)(PhotoCropper);
+export default connect(mapStateToProps, { setCropperModal, setCroppingFile })(PhotoCropper);
