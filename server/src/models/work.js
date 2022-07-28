@@ -1,15 +1,17 @@
 import mongoose from 'mongoose';
 
 const workSchema = new mongoose.Schema({
+  challenge: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Challenge',
+  },
   creator: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
   },
+  // workのurlね。
   work: String,
   type: {
-    type: String,
-  },
-  state: {
     type: String,
   },
   totalVotes: Number,

@@ -1,38 +1,35 @@
 import Poll from '../models/poll';
-import Option from '../models/option';
+// import Option from '../models/option';
 import User from '../models/user';
 import mongoose from 'mongoose';
 
 export const createPoll = async (request, response) => {
-  try {
-    // options [honda, toyota, bmw, nissan]
-    const { creatorId, title, type, options } = request.body;
-    console.log(options);
-    const poll = new Poll({
-      creator: creatorId,
-      title,
-      type,
-      createdAt: new Date(),
-    });
-
-    const optionDocuments = [];
-    for (let i = 0; i < options.length; i++) {
-      const optionDocument = await Option.create({
-        poll: poll._id,
-        content: options[i],
-      });
-      optionDocuments.push(optionDocument);
-    }
-
-    poll.options = optionDocuments;
-
-    await poll.save();
-    response.status(201).json({
-      poll,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  // try {
+  //   // options [honda, toyota, bmw, nissan]
+  //   const { creatorId, title, type, options } = request.body;
+  //   console.log(options);
+  //   const poll = new Poll({
+  //     creator: creatorId,
+  //     title,
+  //     type,
+  //     createdAt: new Date(),
+  //   });
+  //   const optionDocuments = [];
+  //   for (let i = 0; i < options.length; i++) {
+  //     const optionDocument = await Option.create({
+  //       poll: poll._id,
+  //       content: options[i],
+  //     });
+  //     optionDocuments.push(optionDocument);
+  //   }
+  //   poll.options = optionDocuments;
+  //   await poll.save();
+  //   response.status(201).json({
+  //     poll,
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
 };
 
 // export const getRandomPolls = async (request, response) => {
